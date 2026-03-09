@@ -1,0 +1,21 @@
+# Xcode
+*.xcuserdata/
+*.xcworkspace/
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/xcode/
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Windows
+Thumbs.db
+desktop.ini

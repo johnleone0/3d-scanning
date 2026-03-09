@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10001 /* ScannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10001; };
+		A10002 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10002; };
+		A10003 /* ScanSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10003; };
+		A10004 /* ScannedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10004; };
+		A10005 /* ExportFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10005; };
+		A10006 /* LiDARAvailabilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10006; };
+		A10007 /* LiDARScanningService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10007; };
+		A10008 /* MeshProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10008; };
+		A10009 /* ModelExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10009; };
+		A10010 /* ARMeshAnchor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10010; };
+		A10011 /* simd+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10011; };
+		A10012 /* URL+DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10012; };
+		A10013 /* ScanningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10013; };
+		A10014 /* ModelPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10014; };
+		A10015 /* ExportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10015; };
+		A10016 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10016; };
+		A10017 /* ARScanningViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10017; };
+		A10018 /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10018; };
+		A10019 /* ModelPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10019; };
+		A10020 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10020; };
+		A10021 /* ScanControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10021; };
+		A10022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10022; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B10001 /* ScannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerApp.swift; sourceTree = "<group>"; };
+		B10002 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		B10003 /* ScanSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSession.swift; sourceTree = "<group>"; };
+		B10004 /* ScannedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedModel.swift; sourceTree = "<group>"; };
+		B10005 /* ExportFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportFormat.swift; sourceTree = "<group>"; };
+		B10006 /* LiDARAvailabilityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiDARAvailabilityChecker.swift; sourceTree = "<group>"; };
+		B10007 /* LiDARScanningService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiDARScanningService.swift; sourceTree = "<group>"; };
+		B10008 /* MeshProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshProcessingService.swift; sourceTree = "<group>"; };
+		B10009 /* ModelExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExportService.swift; sourceTree = "<group>"; };
+		B10010 /* ARMeshAnchor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARMeshAnchor+Extensions.swift"; sourceTree = "<group>"; };
+		B10011 /* simd+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "simd+Extensions.swift"; sourceTree = "<group>"; };
+		B10012 /* URL+DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		B10013 /* ScanningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewModel.swift; sourceTree = "<group>"; };
+		B10014 /* ModelPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreviewViewModel.swift; sourceTree = "<group>"; };
+		B10015 /* ExportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewModel.swift; sourceTree = "<group>"; };
+		B10016 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B10017 /* ARScanningViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScanningViewRepresentable.swift; sourceTree = "<group>"; };
+		B10018 /* ScanningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
+		B10019 /* ModelPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreviewView.swift; sourceTree = "<group>"; };
+		B10020 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		B10021 /* ScanControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanControlBar.swift; sourceTree = "<group>"; };
+		B10022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B10023 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10099 /* ScannerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScannerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C10001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D10000 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				D10001 /* ScannerApp */,
+				D10099 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D10099 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B10099 /* ScannerApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D10001 /* ScannerApp */ = {
+			isa = PBXGroup;
+			children = (
+				D10002 /* App */,
+				D10003 /* Models */,
+				D10004 /* ViewModels */,
+				D10005 /* Views */,
+				D10006 /* Services */,
+				D10007 /* Extensions */,
+				D10008 /* Resources */,
+				B10023 /* Info.plist */,
+			);
+			path = ScannerApp;
+			sourceTree = "<group>";
+		};
+		D10002 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B10001 /* ScannerApp.swift */,
+				B10002 /* AppState.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D10003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B10003 /* ScanSession.swift */,
+				B10004 /* ScannedModel.swift */,
+				B10005 /* ExportFormat.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D10004 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B10013 /* ScanningViewModel.swift */,
+				B10014 /* ModelPreviewViewModel.swift */,
+				B10015 /* ExportViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D10005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B10016 /* HomeView.swift */,
+				B10017 /* ARScanningViewRepresentable.swift */,
+				B10018 /* ScanningView.swift */,
+				B10019 /* ModelPreviewView.swift */,
+				B10020 /* ExportView.swift */,
+				D10009 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D10009 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B10021 /* ScanControlBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D10006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B10006 /* LiDARAvailabilityChecker.swift */,
+				B10007 /* LiDARScanningService.swift */,
+				B10008 /* MeshProcessingService.swift */,
+				B10009 /* ModelExportService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D10007 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B10010 /* ARMeshAnchor+Extensions.swift */,
+				B10011 /* simd+Extensions.swift */,
+				B10012 /* URL+DocumentsDirectory.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D10008 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B10022 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E10001 /* ScannerApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F10003;
+			buildPhases = (
+				C10002 /* Sources */,
+				C10001 /* Frameworks */,
+				C10003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScannerApp;
+			productName = ScannerApp;
+			productReference = B10099 /* ScannerApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E10000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					E10001 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = F10001;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D10000;
+			productRefGroup = D10099 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E10001 /* ScannerApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C10003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10022 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C10002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10001 /* ScannerApp.swift in Sources */,
+				A10002 /* AppState.swift in Sources */,
+				A10003 /* ScanSession.swift in Sources */,
+				A10004 /* ScannedModel.swift in Sources */,
+				A10005 /* ExportFormat.swift in Sources */,
+				A10006 /* LiDARAvailabilityChecker.swift in Sources */,
+				A10007 /* LiDARScanningService.swift in Sources */,
+				A10008 /* MeshProcessingService.swift in Sources */,
+				A10009 /* ModelExportService.swift in Sources */,
+				A10010 /* ARMeshAnchor+Extensions.swift in Sources */,
+				A10011 /* simd+Extensions.swift in Sources */,
+				A10012 /* URL+DocumentsDirectory.swift in Sources */,
+				A10013 /* ScanningViewModel.swift in Sources */,
+				A10014 /* ModelPreviewViewModel.swift in Sources */,
+				A10015 /* ExportViewModel.swift in Sources */,
+				A10016 /* HomeView.swift in Sources */,
+				A10017 /* ARScanningViewRepresentable.swift in Sources */,
+				A10018 /* ScanningView.swift in Sources */,
+				A10019 /* ModelPreviewView.swift in Sources */,
+				A10020 /* ExportView.swift in Sources */,
+				A10021 /* ScanControlBar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F10010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F10011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F10020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScannerApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "3D Scanner";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scanner3d.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F10021 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScannerApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "3D Scanner";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scanner3d.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F10001 /* Build configuration list for PBXProject */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10010 /* Debug */,
+				F10011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F10003 /* Build configuration list for PBXNativeTarget */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F10020 /* Debug */,
+				F10021 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = E10000 /* Project object */;
+}
