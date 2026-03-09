@@ -9,6 +9,11 @@ final class ScanningViewModel {
     var isProcessing = false
     var exportedModel: ScannedModel?
     var errorMessage: String?
+    var visualizationMode: VisualizationMode = .mesh
+    var isCapturingColors = false
+
+    /// The merged mesh from the most recent completed scan, available for editing/simplification.
+    var lastMergedMesh: MergedMesh?
 
     var scanState: ScanState {
         scanningService.scanState
@@ -26,6 +31,14 @@ final class ScanningViewModel {
         scanningService.totalFaceCount
     }
 
+    var canUndo: Bool {
+        scanningService.canUndo
+    }
+
+    var canRedo: Bool {
+        scanningService.canRedo
+    }
+
     func startScan() {
         scanName = "Scan_\(Self.dateFormatter.string(from: Date()))"
         scanningService.startScanning()
@@ -37,6 +50,18 @@ final class ScanningViewModel {
 
     func resumeScan() {
         scanningService.resumeScanning()
+    }
+
+    func saveUndoPoint() {
+        scanningService.saveUndoPoint()
+    }
+
+    func undo() {
+        scanningService.undo()
+    }
+
+    func redo() {
+        scanningService.redo()
     }
 
     func finishScan(format: ExportFormat = .obj) async -> ScannedModel? {
@@ -52,7 +77,24 @@ final class ScanningViewModel {
                 return nil
             }
 
-            let mergedMesh = MeshProcessingService.mergeMeshAnchors(anchors)
+            var mergedMesh = MeshProcessingService.mergeMeshAnchors(anchors)
+
+            // Capture colors from the latest camera frame if available
+            if let frame = scanningService.latestFrame {
+                isCapturingColors = true
+                let colors = ColorCaptureService.captureColors(for: anchors, from: frame)
+                if !colors.isEmpty {
+                    mergedMesh = MergedMesh(
+                        vertices: mergedMesh.vertices,
+                        normals: mergedMesh.normals,
+                        faces: mergedMesh.faces,
+                        colors: colors
+                    )
+                }
+                isCapturingColors = false
+            }
+
+            lastMergedMesh = mergedMesh
 
             let fileURL = try ModelExportService.export(
                 mesh: mergedMesh,
@@ -67,7 +109,8 @@ final class ScanningViewModel {
                 fileURL: fileURL,
                 vertexCount: mergedMesh.vertices.count,
                 faceCount: mergedMesh.faceCount,
-                format: format
+                format: format,
+                hasColors: mergedMesh.hasColors
             )
 
             exportedModel = model

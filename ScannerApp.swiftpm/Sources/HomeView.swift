@@ -15,6 +15,9 @@ struct HomeView: View {
             }
             .navigationTitle("3D Scanner")
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    cloudSyncButton
+                }
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         showScanner = true
@@ -34,8 +37,31 @@ struct HomeView: View {
                     noLiDAROverlay
                 }
             }
+            .refreshable {
+                await appState.syncWithCloud()
+            }
         }
     }
+
+    // MARK: - Cloud Sync Button
+
+    private var cloudSyncButton: some View {
+        Button {
+            Task {
+                await appState.syncWithCloud()
+            }
+        } label: {
+            if appState.cloudSync.isSyncing {
+                ProgressView()
+            } else {
+                Image(systemName: appState.cloudSync.isAvailable ? "icloud.and.arrow.up.fill" : "icloud.slash")
+                    .symbolRenderingMode(.hierarchical)
+            }
+        }
+        .disabled(appState.cloudSync.isSyncing || !appState.cloudSync.isAvailable)
+    }
+
+    // MARK: - Empty State
 
     private var emptyState: some View {
         ContentUnavailableView {
@@ -51,25 +77,25 @@ struct HomeView: View {
         }
     }
 
+    // MARK: - Models List
+
     private var modelsList: some View {
         List {
-            ForEach(appState.scannedModels) { model in
-                NavigationLink(destination: ModelDetailView(model: model)) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(model.name)
-                            .font(.headline)
-                        HStack(spacing: 12) {
-                            Label("\(model.vertexCount.formatted()) verts", systemImage: "circle.grid.3x3")
-                            Label(model.format.rawValue, systemImage: "doc")
-                            Label(model.fileSizeString, systemImage: "internaldrive")
-                        }
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        Text(model.dateCreated, style: .date)
-                            .font(.caption2)
-                            .foregroundStyle(.tertiary)
+            if let lastSync = appState.cloudSync.lastSyncDate {
+                Section {
+                    HStack {
+                        Image(systemName: "icloud.fill")
+                            .foregroundStyle(.secondary)
+                        Text("Last synced: \(lastSync, style: .relative) ago")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
-                    .padding(.vertical, 4)
+                }
+            }
+
+            ForEach(appState.scannedModels) { model in
+                NavigationLink(destination: ModelDetailView(model: model).environment(appState)) {
+                    modelRow(model)
                 }
             }
             .onDelete { indexSet in
@@ -79,6 +105,33 @@ struct HomeView: View {
             }
         }
     }
+
+    private func modelRow(_ model: ScannedModel) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Text(model.name)
+                    .font(.headline)
+                if model.isCloudSynced {
+                    Image(systemName: "icloud.fill")
+                        .font(.caption)
+                        .foregroundStyle(.blue)
+                }
+            }
+            HStack(spacing: 12) {
+                Label("\(model.vertexCount.formatted()) verts", systemImage: "circle.grid.3x3")
+                Label(model.format.rawValue, systemImage: "doc")
+                Label(model.fileSizeString, systemImage: "internaldrive")
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            Text(model.dateCreated, style: .date)
+                .font(.caption2)
+                .foregroundStyle(.tertiary)
+        }
+        .padding(.vertical, 4)
+    }
+
+    // MARK: - No LiDAR Overlay
 
     private var noLiDAROverlay: some View {
         VStack(spacing: 16) {

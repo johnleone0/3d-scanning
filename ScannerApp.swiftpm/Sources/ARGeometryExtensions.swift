@@ -59,3 +59,21 @@ extension simd_float4x4 {
         SIMD3<Float>(columns.3.x, columns.3.y, columns.3.z)
     }
 }
+
+extension ARMeshAnchor {
+    /// Returns all vertex positions transformed from local anchor space into world space.
+    func worldSpaceVertices() -> [SIMD3<Float>] {
+        let localVertices = geometry.vertices.asFloat3Array()
+        let t = transform
+
+        var result: [SIMD3<Float>] = []
+        result.reserveCapacity(localVertices.count)
+
+        for v in localVertices {
+            let world = t * SIMD4<Float>(v.x, v.y, v.z, 1.0)
+            result.append(SIMD3<Float>(world.x, world.y, world.z))
+        }
+
+        return result
+    }
+}

@@ -11,35 +11,33 @@ struct ScanningView: View {
     var body: some View {
         ZStack {
             // AR Camera feed with mesh wireframe overlay
-            ARScanningViewRepresentable(scanningService: viewModel.scanningService)
-                .ignoresSafeArea()
+            ARScanningViewRepresentable(
+                scanningService: viewModel.scanningService,
+                visualizationMode: viewModel.visualizationMode
+            )
+            .ignoresSafeArea()
 
             VStack {
-                // Top bar: close button + format picker
-                HStack {
-                    Button {
-                        viewModel.scanningService.stopScanning()
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.title)
-                            .symbolRenderingMode(.hierarchical)
-                            .foregroundStyle(.white)
-                    }
-
-                    Spacer()
-
-                    Picker("Format", selection: $exportFormat) {
-                        ForEach(ExportFormat.allCases, id: \.self) { format in
-                            Text(format.rawValue).tag(format)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(width: 140)
-                }
-                .padding()
+                // Top bar: close, undo/redo, visualization mode, format picker
+                topBar
+                    .padding()
 
                 Spacer()
+
+                // Color capture indicator
+                if viewModel.isCapturingColors {
+                    HStack(spacing: 8) {
+                        ProgressView()
+                            .tint(.white)
+                        Text("Capturing colors...")
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(.ultraThinMaterial, in: Capsule())
+                    .padding(.bottom, 8)
+                }
 
                 // Live stats during scan
                 if viewModel.scanState == .scanning || viewModel.scanState == .paused {
@@ -77,6 +75,76 @@ struct ScanningView: View {
         }
         .statusBarHidden()
     }
+
+    // MARK: - Top Bar
+
+    private var topBar: some View {
+        VStack(spacing: 10) {
+            HStack {
+                Button {
+                    viewModel.scanningService.stopScanning()
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .font(.title)
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(.white)
+                }
+
+                Spacer()
+
+                // Undo / Redo buttons
+                if viewModel.scanState == .scanning || viewModel.scanState == .paused {
+                    HStack(spacing: 16) {
+                        Button {
+                            viewModel.undo()
+                        } label: {
+                            Image(systemName: "arrow.uturn.backward.circle.fill")
+                                .font(.title2)
+                                .symbolRenderingMode(.hierarchical)
+                                .foregroundStyle(.white)
+                        }
+                        .disabled(!viewModel.canUndo)
+                        .opacity(viewModel.canUndo ? 1 : 0.4)
+
+                        Button {
+                            viewModel.redo()
+                        } label: {
+                            Image(systemName: "arrow.uturn.forward.circle.fill")
+                                .font(.title2)
+                                .symbolRenderingMode(.hierarchical)
+                                .foregroundStyle(.white)
+                        }
+                        .disabled(!viewModel.canRedo)
+                        .opacity(viewModel.canRedo ? 1 : 0.4)
+                    }
+
+                    Spacer()
+                }
+
+                Picker("Format", selection: $exportFormat) {
+                    ForEach(ExportFormat.allCases, id: \.self) { format in
+                        Text(format.rawValue).tag(format)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .frame(width: 140)
+            }
+
+            // Visualization mode picker
+            if viewModel.scanState == .scanning || viewModel.scanState == .paused {
+                Picker("Visualization", selection: Bindable(viewModel).visualizationMode) {
+                    ForEach(VisualizationMode.allCases, id: \.self) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .frame(maxWidth: 240)
+            }
+        }
+    }
+
+    // MARK: - Scan Controls
 
     @ViewBuilder
     private var scanControls: some View {
